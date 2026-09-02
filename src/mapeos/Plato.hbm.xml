@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.Plato" table="plato">
+        
+        <id column="idPlato" name="idPlato">
+            
+        </id>
+        
+        <property column="nombre" name="nombre" type="string" />
+        <property column="precio" name="precio" type="float" />
+        <property column="costoProduccion" name="costoProduccion" type="float" />
+        
+       
+        
+    </class>
+</hibernate-mapping>

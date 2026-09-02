@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.Item" table="item">
+        
+        <!-- ID de Item -->
+        <id column="idItem" name="idItem" type="int">
+            
+        </id>
+        
+        <!-- Atributos comunes -->
+        <property column="cantidad" name="cantidad" type="int" />
+        
+        <!-- Relación Muchos a Uno con Plato (Clave foránea) -->
+        <many-to-one name="plato" column="idPlato" class="datos.Plato" not-null="true" />
+        
+    </class>
+</hibernate-mapping>
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.Pedido" table="pedido">
+        
+        <!-- ID de Pedido -->
+        <id column="idPedido" name="idPedido" type="long">
+            
+        </id>
+        
+        <!-- Atributos comunes -->
+        <property column="fecha" name="fecha" type="java.time.LocalDate" />
+        
+        <!-- Relación Muchos a Uno con UnidadVenta (Clave foránea) -->
+        <many-to-one name="unidadVenta" column="idUnidadVenta" class="datos.UnidadVenta" not-null="true" />
+        
+        <!-- Relación Unidireccional Uno a Muchos con Item -->
+        <set name="items" table="item" lazy="true" cascade="all">
+            <key column="idPedido" />
+            <one-to-many class="datos.Item" />
+        </set>
+        
+    </class>
+</hibernate-mapping>

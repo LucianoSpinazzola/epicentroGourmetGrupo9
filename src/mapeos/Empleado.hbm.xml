@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.Empleado" table="empleado">
+        
+        <!-- ID de la clase padre -->
+        <id column="idEmpleado" name="idEmpleado" type="long">
+            
+        </id>
+        
+        <!-- Atributos comunes de Empleado -->
+        <property column="dni" name="dni" type="int" />
+        <property column="nombre" name="nombre" type="string" />
+        <property column="apellido" name="apellido" type="string" />
+        <property column="fechaNacimiento" name="fechaNacimiento" type="java.time.LocalDate" />
+        <property column="fechaIngreso" name="fechaIngreso" type="java.time.LocalDate" />
+        <property column="sueldo" name="sueldo" type="float" />
+        <property column="esEncargado" name="esEncargado" type="boolean" />
+        <property column="puestoDondeTrabaja" name="puestoDondeTrabaja" type="int" />
+        
+        <!-- Mapeo de la subclase Cajero -->
+        <joined-subclass name="datos.Cajero" table="cajero">
+            <key column="idEmpleado" />
+            <property column="turno" name="turno" type="string" />
+        </joined-subclass>
+        
+        <!-- Mapeo de la subclase Cocinero -->
+        <joined-subclass name="datos.Cocinero" table="cocinero">
+            <key column="idEmpleado" />
+            <property column="especialidad" name="especialidad" type="string" />
+            <property column="plusSalarial" name="plusSalarial" type="float" />
+        </joined-subclass>
+        
+    </class>
+</hibernate-mapping>

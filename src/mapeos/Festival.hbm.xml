@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.Festival" table="festival">
+        
+        <id column="idFestival" name="idFestival">
+        <generator class="identity" />
+        </id>
+        
+        <property column="nombre" name="nombre" type="string" />
+        <property column="temporada" name="temporada" type="string" />
+        <property column="fechaDeInicio" name="fechaDeInicio" type="date" />
+        <property column="fechaDeFin" name="fechaDeFin" type="date" />
+        <set name="platos" table="plato" lazy="true" cascade="all">
+            <key column="idFestival" />
+            <one-to-many class="datos.Plato" />
+        </set>
+    </class>
+</hibernate-mapping>
+
