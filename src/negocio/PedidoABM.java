@@ -1,5 +1,16 @@
 package negocio;
 
-public class PedidoABM {
+import java.time.LocalDate;
+import java.util.List;
+import org.hibernate.HibernateException;
+import dao.PedidoDao;
+import datos.Pedido;
 
+public class PedidoABM {
+	PedidoDao dao = new PedidoDao();
+
+	public List<Pedido> traerPorFechaYTipoUnidad(LocalDate fechaDesde, LocalDate fechaHasta, String tipoUnidad)
+			throws HibernateException {
+		return dao.traerPorFechaYTipoUnidad(fechaDesde, fechaHasta, tipoUnidad);
+	}
 }
