@@ -1,6 +1,7 @@
 package dao;
 
 import org.hibernate.Hibernate;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,7 +10,7 @@ import org.hibernate.Transaction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import datos.Item;
 import datos.Pedido;
 
 public class PedidoDao {
@@ -105,12 +106,15 @@ public class PedidoDao {
 		List<Pedido> lista = null;
 		try {
 			iniciaOperacion();
-			String hql = "from Pedido p where p.fecha between :fechaDesde and :fechaHasta and p.unidadVenta.class = "
+			String hql = "select p from Pedido p join p.unidadVenta u where p.fecha between :fechaDesde and :fechaHasta and type(u) = "
 					+ tipoUnidad + " order by p.fecha asc";
 			lista = session.createQuery(hql, Pedido.class).setParameter("fechaDesde", fechaDesde)
 					.setParameter("fechaHasta", fechaHasta).getResultList();
 			for (Pedido p : lista) {
 				Hibernate.initialize(p.getItems());
+				for (Item i : p.getItems()) {
+					Hibernate.initialize(i.getPlato());
+				}
 			}
 		} finally {
 			session.close();
