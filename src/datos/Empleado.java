@@ -3,7 +3,7 @@ package datos;
 import java.time.LocalDate;
 
 public abstract class Empleado {
-private long idEmpleado;
+private int idEmpleado;
 private int dni;
 private String nombre;
 private String apellido;
@@ -26,10 +26,10 @@ private int puestoDondeTrabaja;
 		this.esEncargado = esEncargado;
 		this.puestoDondeTrabaja = puestoDondeTrabaja;
 	 }
-	 public long getIdEmpleado() {
+	 public int getIdEmpleado() {
 		 return idEmpleado;
 	 }
-	 protected void setIdEmpleado(long idEmpleado) {
+	 protected void setIdEmpleado(int idEmpleado) {
 		 this.idEmpleado = idEmpleado;
 	 }
 	 public int getDni() {

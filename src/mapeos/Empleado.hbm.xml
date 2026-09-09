@@ -3,8 +3,8 @@
     <class name="datos.Empleado" table="empleado">
         
         <!-- ID de la clase padre -->
-        <id column="idEmpleado" name="idEmpleado" type="long">
-            
+        <id column="idEmpleado" name="idEmpleado" type="int">
+            <generator class="identity" />
         </id>
         
         <!-- Atributos comunes de Empleado -->

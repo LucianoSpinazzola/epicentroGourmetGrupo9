@@ -11,7 +11,7 @@ import datos.Empleado;
 
 public class EmpleadoABM {
 	EmpleadoDao dao = EmpleadoDao.getInstance();
-	public Empleado traer(long idEmpleado) {
+	public Empleado traer(int idEmpleado) {
 	return dao.traer(idEmpleado);
 	}
 	
@@ -26,7 +26,7 @@ public class EmpleadoABM {
 	
 	dao.actualizar(c);
 	}
-	public void modificarCajero(long idEmpleado,int dniN, String nombreN, String apellidoN, LocalDate fechaNacimientoN,
+	public void modificarCajero(int idEmpleado,int dniN, String nombreN, String apellidoN, LocalDate fechaNacimientoN,
 			LocalDate fechaIngresoN, float sueldoN, boolean esEncargadoN, int puestoDondeTrabajaN,String turnoN)throws Exception{
 	    Empleado EmpleadoParaModificar=dao.traer(idEmpleado);
 		if(EmpleadoParaModificar == null) {
@@ -67,7 +67,7 @@ public class EmpleadoABM {
 	
 	dao.actualizar(c);
 	}
-	public void modificarCocinero(long idEmpleado,int dniN, String nombreN, String apellidoN, LocalDate fechaNacimientoN,
+	public void modificarCocinero(int idEmpleado,int dniN, String nombreN, String apellidoN, LocalDate fechaNacimientoN,
 			LocalDate fechaIngresoN, float sueldoN, boolean esEncargadoN, int puestoDondeTrabajaN,String especialidadN,
 			float plusSalarialN)throws Exception{
 	    Empleado EmpleadoParaModificar=dao.traer(idEmpleado);
@@ -98,7 +98,7 @@ public class EmpleadoABM {
 	}		
 		
 		
-	public void eliminar(long idEmpleado) throws Exception {
+	public void eliminar(int idEmpleado) throws Exception {
 	
 		
 	Empleado e = dao.traer(idEmpleado);
