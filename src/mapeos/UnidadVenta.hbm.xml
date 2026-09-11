@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping>
+    <class name="datos.UnidadVenta" table="unidad_venta">
+        
+        <!-- ID de la clase padre -->
+        <id column="idUnidadVenta" name="idUnidadVenta" type="int">
+            <generator class="identity" />
+        </id>
+        
+        <!-- Atributos comunes de UnidadVenta -->
+        <property column="nombre" name="nombre" type="string" />
+        <property column="superficie" name="superficie" type="double" />
+        
+        <!-- Relación Unidireccional Uno a Muchos con Empleado -->
+        <set name="empleados" table="empleado" lazy="true" cascade="all">
+            <key column="idUnidadVenta" />
+            <one-to-many class="datos.Empleado" />
+        </set>
+        
+        <!-- Subclase PuestoDesmontable (Estrategia JOIN) -->
+        <joined-subclass name="datos.PuestoDesmontable" table="puesto_desmontable">
+            <key column="idUnidadVenta" />
+            <property column="cantidadCarpas" name="cantidadCarpas" type="int" />
+            <property column="tiempoInstalacion" name="tiempoInstalacion" type="int" />
+        </joined-subclass>
+        
+        <!-- Subclase CamionComida (Estrategia JOIN) -->
+        <joined-subclass name="datos.CamionComida" table="camion_comida">
+            <key column="idUnidadVenta" />
+            <!-- SI TIENE ATRIBUTOS PROPIOS, AGREGALOS ACÁ ABAJO COMO LAS PROPERTIES COMUNES, POR EJEMPLO: -->
+            <!-- <property column="patente" name="patente" type="string" /> -->
+        </joined-subclass>
+        
+    </class>
+</hibernate-mapping>

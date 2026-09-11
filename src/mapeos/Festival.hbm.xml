@@ -2,7 +2,7 @@
 <hibernate-mapping>
     <class name="datos.Festival" table="festival">
 
-        <id column="idFestival" name="idFestival">
+        <id column="idFestival" name="idFestival" type="int">
         <generator class="identity" />
         </id>
 
